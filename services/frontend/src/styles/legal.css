@@ -1,0 +1,73 @@
+.legal-page {
+  min-height: 100vh;
+  background: #f5f5f5;
+  padding: 20px;
+}
+
+.legal-content {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.legal-content h1 {
+  color: var(--primary-color);
+  margin-bottom: 32px;
+}
+
+.legal-content section {
+  margin-bottom: 32px;
+}
+
+.legal-content h2 {
+  color: #333;
+  margin-bottom: 16px;
+}
+
+.legal-content ul {
+  list-style-type: disc;
+  margin-left: 20px;
+  margin-top: 12px;
+}
+
+.legal-content li {
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.legal-footer {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+  text-align: center;
+}
+
+.legal-footer a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+/* Add to auth.css */
+.terms-checkbox {
+  margin: 16px 0;
+}
+
+.terms-checkbox label {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.terms-checkbox input[type="checkbox"] {
+  margin-top: 2px;
+}
+
+.terms-checkbox a {
+  color: var(--primary-color);
+  text-decoration: none;
+} 

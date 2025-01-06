@@ -1,0 +1,101 @@
+.job-detail {
+  padding: 16px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.status-banner {
+  background: white;
+  padding: 16px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.status-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.status-badge.active {
+  background: #4caf50;
+  color: white;
+}
+
+.status-badge.completed {
+  background: #2196f3;
+  color: white;
+}
+
+.eta {
+  font-weight: bold;
+  color: #666;
+}
+
+.location-section,
+.customer-section,
+.job-info {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.map-container {
+  margin-top: 16px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.additional-info {
+  margin-top: 12px;
+  padding: 12px;
+  background: #f5f5f5;
+  border-radius: 8px;
+}
+
+.completion-form {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  margin-top: 24px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.completion-summary {
+  margin: 20px 0;
+  padding: 16px;
+  background: #f5f5f5;
+  border-radius: 8px;
+}
+
+.completion-summary p {
+  margin: 8px 0;
+  font-weight: bold;
+}
+
+.complete-btn {
+  width: 100%;
+  padding: 16px;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.complete-btn:hover {
+  background: #1565c0;
+}
+
+/* Add to index.css */
+@import './job-detail.css'; 

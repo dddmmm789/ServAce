@@ -1,0 +1,87 @@
+const Review = require('../models/Review');
+const { generateMultipleReviews } = require('../utils/reviewGenerator');
+
+const reviewController = {
+  // Get reviews for a specific locksmith
+  async getLocksmithReviews(req, res) {
+    try {
+      const { locksmithId } = req.params;
+      const reviews = await Review.find({ locksmithId })
+        .sort({ createdAt: -1 });
+      
+      const stats = await Review.calculateAverageRating(locksmithId);
+      
+      res.json({
+        reviews,
+        stats
+      });
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  },
+
+  // Create a new review
+  async createReview(req, res) {
+    try {
+      const {
+        locksmithId,
+        customerId,
+        jobId,
+        rating,
+        content,
+        reviewerName
+      } = req.body;
+
+      const review = new Review({
+        locksmithId,
+        customerId,
+        jobId,
+        rating,
+        content,
+        reviewerName,
+        isVerifiedCustomer: true,
+        isAdminGenerated: false
+      });
+
+      await review.save();
+      res.status(201).json(review);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  },
+
+  // Admin: Generate random reviews
+  async generateRandomReviews(req, res) {
+    try {
+      const { locksmithId } = req.params;
+      const count = parseInt(req.query.count) || 10;
+
+      // Check if request is from admin
+      if (!req.user || !req.user.isAdmin) {
+        return res.status(403).json({ message: 'Admin access required' });
+      }
+
+      const randomReviews = generateMultipleReviews(count, locksmithId);
+      await Review.insertMany(randomReviews);
+
+      res.json({ 
+        message: `Successfully generated ${count} reviews`,
+        count
+      });
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  },
+
+  // Get review statistics
+  async getReviewStats(req, res) {
+    try {
+      const { locksmithId } = req.params;
+      const stats = await Review.calculateAverageRating(locksmithId);
+      res.json(stats);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  }
+};
+module.exports = reviewController;
